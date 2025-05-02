@@ -70,7 +70,8 @@ class Helpers {
       if (Platform.isIOS || Platform.isAndroid) {
         path = (await path_provider.getApplicationDocumentsDirectory()).path;
       } else if (Platform.isMacOS) {
-        path = (await path_provider.getDownloadsDirectory())?.path;
+        //path = (await path_provider.getDownloadsDirectory())?.path; //because access issue was there and it was always accessing
+        path = (await path_provider.getApplicationDocumentsDirectory())?.path; 
       } else if (Platform.isWindows) {
         path_provder_windows.PathProviderWindows pathWindows = path_provder_windows.PathProviderWindows();
         path = await pathWindows.getDownloadsPath();
